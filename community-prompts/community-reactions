@@ -76,9 +76,6 @@ templates:
             msgtype: m.text
             body: |
                 🌟Community Reminder🌟
-
-                Hey everyone! Our group thrives on technical discussions, sharing knowledge, and building cool projects together. We're all about creating a focused and supportive environment for these activities.
-
                 We understand everyone likes a good laugh or a casual chat now and then, which is why we've got a special place just for that! 
 
                 If you're itching for off-topic banter or to share the latest meme, head over to our off-topic chat: http://url.irregular.chat/go-off-topic. 
@@ -188,6 +185,10 @@ rules:
         - \b!send-nsa\b
         - \b!send-dod\b
         template: email_request
+    offtopic_warning:
+        matches:
+        - \b!send-off-topic\b
+        template: offtopic_warning
     language_warning:
         matches:
         - \bshit\b
