@@ -228,6 +228,7 @@ rules:
     suicide_mention:
         matches:
         - \bsuicide\b
+        - \bkill yourself\b
         - \bkilled themselves\b
         - \bkilled himself\b
         - \bshot themselves\b
