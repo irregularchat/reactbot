@@ -68,6 +68,31 @@ templates:
             m.relates_to:
                 m.in_reply_to:
                     event_id: $${event_id}
+    offtopic_warning:
+        type: m.room.message
+        variables:
+            event_id: '{{event.event_id}}'
+        content:
+            msgtype: m.text
+            body: |
+                🌟Community Reminder🌟
+
+                Hey everyone! Our group thrives on technical discussions, sharing knowledge, and building cool projects together. We're all about creating a focused and supportive environment for these activities.
+
+                We understand everyone likes a good laugh or a casual chat now and then, which is why we've got a special place just for that! 
+
+                If you're itching for off-topic banter or to share the latest meme, head over to our off-topic chat: http://url.irregular.chat/go-off-topic. 
+
+                It's the perfect spot for when you want to relax and diverge from specific topic talk.
+
+                If you're not interested in the technical aspects, no worries! We want everyone to find their best fit, and there are no hard feelings if this isn't the place for you.
+
+                Let's keep our main chat focused on tech to ensure it remains a valuable resource for everyone. 
+
+                Thanks for being such an awesome part of our journey. Let's keep pushing the boundaries of what we can achieve together! 🚀
+            m.relates_to:
+                m.in_reply_to:
+                    event_id: $${event_id}
     suicide_mention:
         type: m.room.message
         variables:
