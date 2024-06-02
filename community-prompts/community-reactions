@@ -1,0 +1,281 @@
+templates:
+    robert_joined:
+        type: m.room.message
+        variables:
+            event_id: '{{event.event_id}}'
+        content:
+            msgtype: m.text
+            body: '*Robert has joined the chat*'
+            m.relates_to:
+                m.in_reply_to:
+                    event_id: $${event_id}
+    joel_kubernetes:
+        type: m.room.message
+        variables:
+            event_id: '{{event.event_id}}'
+        content:
+            msgtype: m.text
+            body: Hey, look at Joel talking about K8!
+            m.relates_to:
+                m.in_reply_to:
+                    event_id: $${event_id}
+    wendys:
+        type: m.room.message
+        variables:
+            event_id: '{{event.event_id}}'
+        content:
+            msgtype: m.text
+            body: Ma'am this is a Wendy's
+            m.relates_to:
+                m.in_reply_to:
+                    event_id: $${event_id}
+    react_eyes:
+        type: m.reaction
+        variables:
+            react_to_event: '{{event.event_id}}'
+        content:
+            m.relates_to:
+                rel_type: m.annotation
+                event_id: $${react_to_event}
+                key: 👀
+    react_d:
+        type: m.reaction
+        variables:
+            react_to_event: '{{event.event_id}}'
+        content:
+            m.relates_to:
+                rel_type: m.annotation
+                event_id: $${react_to_event}
+                key: 🍆
+    email_request:
+        type: m.room.message
+        variables:
+            event_id: '{{event.event_id}}'
+        content:
+            msgtype: m.text
+            body: |
+                Are you on the NIPR or higher Milsuite or Chatsurfer?
+
+                🍀
+                Direct NIPR Link Chatsurfer: https://url.irregular.chat/chatsurfer
+                Direct NIPR Link Milsuite: https://url.irregular.chat/msuite
+                👹
+                Direct SIPR Link Chatsurfer: https://chatsurfer.proj.nro.smil.mil
+
+                or search "irregular chat" on chatsurfer NIPR SIPR or higher
+
+                Perfect for sharing on the appropriate level while still breaking down silos and being found by others working on these same topics
+            m.relates_to:
+                m.in_reply_to:
+                    event_id: $${event_id}
+    suicide_mention:
+        type: m.room.message
+        variables:
+            event_id: '{{event.event_id}}'
+        content:
+            msgtype: m.text
+            body: 'The help page has self help and buddy aid resources for crisis situations FYSA: https://wiki.irregularchat.com/help'
+            m.relates_to:
+                m.in_reply_to:
+                    event_id: $${event_id}
+    other_chats:
+        type: m.room.message
+        variables:
+            event_id: '{{event.event_id}}'
+        content:
+            msgtype: m.text
+            body: 'Check out the breakdown of all the other chats after you get IrregularChat Login: https://wiki.irregularchat.com/community/links'
+            m.relates_to:
+                m.in_reply_to:
+                    event_id: $${event_id}
+    lessons_learned:
+        type: m.room.message
+        variables:
+            event_id: '{{event.event_id}}'
+        content:
+            msgtype: m.text
+            body: |
+                Direct SIPR Link Chatsurfer: https://chatsurfer.proj.nro.[mil OR smil.mil OR ic.gov]
+                Then search "irregularchat"
+            m.relates_to:
+                m.in_reply_to:
+                    event_id: $${event_id}
+    element_matrix:
+        type: m.room.message
+        variables:
+            event_id: '{{event.event_id}}'
+        content:
+            msgtype: m.text
+            body: https://sso.irregularchat.com/if/flow/default-source-enrollment/?itoken=378dc235-0c53-4928-911a-6d4df38c3d2e
+            m.relates_to:
+                m.in_reply_to:
+                    event_id: $${event_id}
+    image_post_threaded:
+        type: m.room.message
+        content:
+            msgtype: m.image
+            body: Image
+            url: $${image_url}
+            m.relates_to:
+                m.in_reply_to:
+                    event_id: $${event_id}
+
+default_flags:
+- ignorecase
+antispam:
+    room:
+        max: 25
+        delay: 60
+    user:
+        max: 9
+        delay: 60
+
+rules:
+    robert:
+        matches:
+        - \bmesogen\b
+        - \bmisogen\b
+        - \bconspiracy\b
+        template: robert_joined
+    joel:
+        matches:
+        - \bkubernetes\b
+        - \bcluster\b
+        - \bk8s?\b
+        template: joel_kubernetes
+    wendys:
+        matches:
+        - \brant\b
+        template: wendys
+    react_sac:
+        matches:
+        - \bsac'd\b
+        - \babout to get sac\b
+        - \bget sac\b
+        template: react_eyes
+    email_request:
+        matches:
+        - \bsend me your email\b
+        - \bDM me\b
+        template: email_request
+    language_warning:
+        matches:
+        - \bshit\b
+        - \bfuck\b
+        - \bfag\b
+        - \bidiot\b
+        - \bgay\b
+        - \bbitch\b
+        - \basshole\b
+        - \bcunt\b
+        - \bballs\b
+        - \bdamn\b
+        - \bcrap\b
+        - \bpiss\b
+        - \bslut\b
+        - \bdick\b
+        - \bmoron\b
+        template: react_eyes
+    react_curse:
+        matches:
+        - \byou\b.*\bshit\b
+        - \byou\b.*\bfuck\b
+        - \byou\b.*\bbitch\b
+        - \byou\b.*\basshole\b
+        - \byou\b.*\bcunt\b
+        - \byou\b.*\bdamn\b
+        - \byou\b.*\bcrap\b
+        - \byou\b.*\bpiss\b
+        - \byou\b.*\bslut\b
+        - \byou\b.*\bdick\b
+        - \byou\b.*\bmoron\b
+        template: react_eyes
+    penis:
+        matches:
+        - \bpenis\b
+        template: react_d
+    suicide_mention:
+        matches:
+        - \bsuicide\b
+        - \bkilled themselves\b
+        - \bkilled himself\b
+        - \bshot themselves\b
+        template: suicide_mention
+    other_chats:
+        matches:
+        - \bother chats\b
+        template: other_chats
+    lessons_learned:
+        matches:
+        - \blessons learned\b
+        - \bNIPR\b
+        - \bDM me\b
+        - \bchat surfer\b
+        - \bchatsurfer\b
+        template: lessons_learned
+    element_matrix:
+        matches:
+        - \belement messenger\b
+        - \bmatrix\b
+        - \binvite link\b
+        template: element_matrix
+    mom:
+        matches:
+        - \bmom\b
+        - \bmomma\b
+        - \bmama\b
+        - \bmamma\b
+        - \bmum\b
+        - \bmommy\b
+        template: image_post_threaded
+        variables:
+            image_url: mxc://irregularchat.com/bGYAWamcCHrtONGOVLKdtber
+    skynet_bigbrother:
+        matches:
+        - \bskynet\b
+        - \bbig brother\b
+        template: image_post_threaded
+        variables:
+            image_url: mxc://irregularchat.com/pWFuczRHgZbRXiWQhSKrEyul
+    sorry:
+        matches:
+        - \bsorry\b
+        template: image_post_threaded
+        variables:
+            image_url: mxc://irregularchat.com/FTOTkfrghMXGaHKIQDeyrGkt
+    rant_image:
+        matches:
+        - \brant\b
+        template: image_post_threaded
+        variables:
+            image_url: mxc://irregularchat.com/rebXwxIuoJhaVhBSiRSfxlSc
+    ew:
+        matches:
+        - \bpoop\b
+        template: image_post_threaded
+        variables:
+            image_url: mxc://irregularchat.com/dmxQgtrYeZgWsMbDTgMCKCeR
+    power_ranger:
+        matches:
+        - \bmorphin\b
+        - \bmighty\b
+        template: image_post_threaded
+        variables:
+            image_url: mxc://irregularchat.com/evuKgQzvaznfpECfoBXzCTXa
+    knowledge_management:
+        matches:
+        - \bwiki\b
+        - \bonenote\b
+        - \bguide\b
+        template: image_post_threaded
+        variables:
+            image_url: mxc://irregularchat.com/MxysNnBjuBpdVCCTUDtZDwkB
+    toes:
+        matches:
+        - \btoes\b
+        - \bfeet\b
+        - \boff topic\b
+        - \botc\b
+        template: image_post_threaded
+        variables:
+            image_url: mxc://irregularchat.com/EFmtwUMqulTlVFomTvwQWcfX
