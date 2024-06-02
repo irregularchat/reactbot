@@ -179,15 +179,15 @@ rules:
         matches:
         - \bsend me your email\b
         - \bDM me\b
-        - \b!send-gov\b
-        - \b!send-nipr\b
-        - \b!send-sipr\b
-        - \b!send-nsa\b
-        - \b!send-dod\b
+        - ^!send-gov\b
+        - ^!send-nipr\b
+        - ^!send-sipr\b
+        - ^!send-nsa\b
+        - ^!send-dod\b
         template: email_request
-    offtopic_warning:
+    send_offtopic:
         matches:
-        - \b!send-off-topic\b
+        - ^!send-offtopic\b
         template: offtopic_warning
     language_warning:
         matches:
