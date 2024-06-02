@@ -122,13 +122,13 @@ templates:
             m.relates_to:
                 m.in_reply_to:
                     event_id: $${event_id}
-    element_matrix:
+    community-invite:
         type: m.room.message
         variables:
             event_id: '{{event.event_id}}'
         content:
             msgtype: m.text
-            body: https://sso.irregularchat.com/if/flow/default-source-enrollment/?itoken=378dc235-0c53-4928-911a-6d4df38c3d2e
+            body: Message @sac.159, @Jon Munson, or @roderick for an invite to the Irregular Chat Login with access to the wiki and other services.
             m.relates_to:
                 m.in_reply_to:
                     event_id: $${event_id}
@@ -245,12 +245,12 @@ rules:
         - \bchat surfer\b
         - \bchatsurfer\b
         template: lessons_learned
-    element_matrix:
+    community-invite:
         matches:
         - \belement messenger\b
         - \bmatrix\b
         - \binvite link\b
-        template: element_matrix
+        template: community-invite
     mom:
         matches:
         - \bmom\b
